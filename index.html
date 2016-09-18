@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>OnePush</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body ng-app="ngOnePush" ng-controller="OpCtrl">
+	<!-- Navbar starts -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#me">OnePush </a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">We have found {{websitesData.length}} portfolios</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- End of navbar -->
+	<div class="container-fluid" id="sec1">
+		<div class="row">
+			<div class="col-md-7" id="display-area">
+				<div class="form-group">
+					<input type="text" ng-model="searchName" class="form-control" placeholder="&#128270; Search by Title">
+					<input type="text" ng-model="searchTag" class="form-control" placeholder="&#128270; Search by Tag">
+				</div>
+				<div id="website-display">
+					<div class="portfolio" ng-repeat="portfolio in websitesData|filter:{title:searchName}|filter:{tag:searchTag}|limitTo:limit:begin">
+						<div class="row">
+							<div class="col-md-1 imgholder">
+								<img ng-src="{{portfolio.favicon_image}}" width="50px" height="50px" style="display: inline-block">
+							</div>
+							<div class="col-md-10">
+								<p><strong>{{portfolio.title}}</strong></p>
+								<div class="row txt">
+									<p class="col-xs-3 tag"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> {{ portfolio.tag }}</p>
+									<p class="col-xs-7 url">
+										<span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+										<a ng-href="{{ portfolio.url_address }}" target="_blank" rel="noopener">
+											{{ portfolio.url_address | limitTo:30 }}
+										</a>
+									</p>
+									<p class="col-xs-2 likes"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 5</p>
+									<div style="clear: both;"></div>
+								</div>
+							</div>
+						</div>
+					</div><!-- portfolio -->
+				</div>
+				<!-- Pagination bar -->
+				<div class="cms-pager">
+					<ul class="pagination" style="margin: 0px auto">
+						<li ng-repeat="pageNo in pages|limitTo:10:pgBegin" ng-class="{active:currentPage === pageNo}">
+							<a href="#" ng-click="updateProfiles(pageNo)">{{pageNo}}</a>
+						</li>
+					</ul>
+				</div>
+				<!-- Pagination bar ends-->
+			</div><!-- /col-md-7 -->
+			<div class="col-md-5" id="entry-area">
+				<div>
+					<h3>Contribute / Add website</h3>
+					<div class="form-group">
+						<input type="text" ng-model="newName" class="form-control" placeholder="Name">
+						<input type="text" ng-model="newURL" class="form-control" placeholder="web/url address">
+						<input type="text" ng-model="newTag" class="form-control" placeholder="tag">
+						<a class="btn btn-default" href="#" ng-click="addPortfolio()">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Push Website
+						</a>
+					</div>
+				</div>
+				<div class="alert alert-success" ng-show="showSuccess === true">
+					<a href="#" class="close" ng-click="showSuccess = false">&times;</a>
+					<strong>Success!</strong> Porfolio added to the end.
+				</div>
+				<div class="alert alert-danger" ng-show="showError === true">
+					<a href="#" class="close" ng-click="showError = false">&times;</a>
+					<strong>Error!</strong> Invalid Data.
+				</div>
+			</div><!-- /col-md-5 -->
+		</div><!-- /row -->
+	</div><!-- /container-fluid -->
+	<footer>
+		<p>Made by Ishtiaque Zafar. ishtiaque.zafar92@gmail.com</p>
+	</footer>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="scripts/app/app.js"></script>
+<script src="scripts/app/controllers.js"></script>
+<script src="scripts/app/services.js"></script>
+</body>
+</html>

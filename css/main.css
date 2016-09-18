@@ -1,0 +1,93 @@
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+    background-color: lightgray;
+}
+
+.navbar-nav li a:hover {
+    color: #1abc9c !important;
+}
+
+#sec1{
+    margin-top: 6em;
+}
+#sec1 #display-area{
+    border-right: 1px solid slategrey;
+}
+#display-area > .form-group > input{
+    display: inline;
+    width: 26.5em;
+}
+
+#display-area, #entry-area{
+
+}
+
+#entry-area .form-group > input{
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+}
+.portfolio{
+    width: 40em;
+    background-color: aquamarine;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    padding: 0.5em 1em 0em 1em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+
+}
+@media only screen and (max-width: 58em){
+    .portfolio {
+        width: 100%;
+    }
+    #sec1 #display-area{
+        border-right: none;
+        border-bottom: 1px solid lightgrey;
+    }
+}
+.portfolio .imgholder{
+    margin-right: 0.5em;
+}
+.portfolio .txt .tag, .portfolio .txt .url, .portfolio .txt .likes {
+    padding-right: 0;
+}
+.alignleft {
+    float: left;
+}
+.alignright {
+    float: right;
+}
+#website-display{
+    overflow: auto;
+    min-height: 65vh;
+}
+
+/* ------------------------------- */
+.cms-pager, .cms-pager ul, .cms-pager ul li {
+    margin: 0 auto;
+}
+
+.cms-pager {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.cms-pager ul li {
+    width: 10px;
+    padding: 8px;
+}
+
+footer{
+    background-color: darkslategray;
+    color: white;
+    text-align: center;
+    margin-bottom: 0;
+    height: 4em;
+    padding-top: 1em;
+}
